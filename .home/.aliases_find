@@ -1,0 +1,140 @@
+ # $HOME/.aliases_find
+
+# ==================================================
+# FD + RIPGREP + FZF + VIM
+# COMMON REAL-WORLD ALIASES & FUNCTIONS
+# ==================================================
+
+# ------------------------------
+# CORE REPLACEMENTS
+# ------------------------------
+
+# fd instead of find
+alias f='fd'
+
+# rg instead of grep
+alias g='rg'
+
+# ------------------------------
+# FILE OPENING (VIM)
+# ------------------------------
+
+# Open a file interactively
+alias vf='vim $(fd | fzf)'
+
+# Open multiple files interactively
+alias vfm='fd | fzf -m | xargs vim'
+
+# Open recently modified files (2 days)
+alias vrecent='vim $(fd . --changed-within 2d)'
+
+# ------------------------------
+# SEARCH CONTENT
+# ------------------------------
+
+# Search text everywhere
+alias s='rg'
+
+# Search TODOs
+alias todo='rg TODO'
+
+# Search errors
+alias err='rg -i "error|fail|fatal|exception"'
+
+# Search secrets
+alias secrets='rg -i "password|secret|token|apikey|jwt"'
+
+# ------------------------------
+# SEARCH + OPEN IN VIM
+# ------------------------------
+
+# Open all files containing a pattern
+vg() {
+  vim $(rg -l "$1")
+}
+
+# Interactive search with preview, then open file
+vgi() {
+  rg --line-number --no-heading "$1" \
+  | fzf --delimiter : \
+        --preview 'bat --style=numbers --color=always {1} --line-range {2}:' \
+  | cut -d: -f1 | uniq | xargs vim
+}
+
+# ------------------------------
+# FD + RG COMBINATIONS
+# ------------------------------
+
+# Search only PHP files
+rgphp() {
+  fd -e php | xargs rg "$1"
+}
+
+# Find files missing something
+missing() {
+  fd -e "$1" | rg -L "$2"
+}
+
+# Example:
+# missing php strict_types
+
+# ------------------------------
+# REFACTORING
+# ------------------------------
+
+# Preview refactor targets
+reflist() {
+  rg -l "$1"
+}
+
+# Replace symbol everywhere (USE WITH CARE)
+refactor() {
+  rg -l "$1" | xargs sed -i "s/$1/$2/g"
+}
+
+# ------------------------------
+# CLEANUP / AUDIT
+# ------------------------------
+
+# Find debug leftovers
+alias debug='rg "var_dump|dump\(|console\.log|print_r"'
+
+# Find unused env variable
+unusedenv() {
+  rg "$1" -g '!.env*'
+}
+
+# ------------------------------
+# FILE MAINTENANCE
+# ------------------------------
+
+# Largest files in repo
+alias big='fd -t f -x du -h {} | sort -hr | head'
+
+# ------------------------------
+# INTERACTIVE POWER
+# ------------------------------
+
+# Pick file and open in Vim (preview)
+alias vfp='fd | fzf --preview "bat --style=numbers --color=always {}" | xargs vim'
+
+# Search content interactively and open
+openrg() {
+  rg "$1" \
+  | fzf \
+  | cut -d: -f1 | uniq \
+  | xargs vim
+}
+
+# ------------------------------
+# CORE WORKFLOW REMINDER
+# ------------------------------
+#
+# fd  → scope files
+# rg  → search contents
+# fzf → choose
+# vim → act
+#
+# vim $(rg -l "something")
+#
+# ==================================================

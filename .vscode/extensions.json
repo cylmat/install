@@ -1,0 +1,180 @@
+ {
+    // https://cult.honeypot.io/reads/best-visual-studio-code-extensions-2022
+    // https://itexpert.fr/blog/extensions-vscode
+
+    // use @recommendations
+    "recommendations": [
+
+        // -------------- //
+        // - ESSENTIALS - //
+        // -------------- //
+
+        // Coding
+        "shardulm94.trailing-spaces",
+        "vscodevim.vim",
+        "yatki.vscode-surround",
+
+        // ai
+        "genieai.chatgpt-vscode",
+
+        // Frontend - React Extension Pack //
+        "baeumer.vscode-eslint",
+        "christian-kohler.path-intellisense",
+        "hossaini.bootstrap-intellisense", // need enable configuration
+        "pranaygp.vscode-css-peek",
+        //
+        "dsznajder.es7-react-js-snippets",
+        "nadim-vscode.twig-code-snippets",
+        "xabikos.javascriptsnippets",
+        "xabikos.reactsnippets",
+
+        // Backend - PHP Essentials //
+        "bmewburn.vscode-intelephense-client",
+        "devsense.intelli-php-vscode",
+        "mehedidracula.php-constructor",
+        "mehedidracula.php-namespace-resolver",
+        "onecentlin.php-productive-pack",
+        "recca0120.vscode-phpunit",
+        //
+        "hakcorp.php-awesome-snippets",
+        "nadim-vscode.symfony-code-snippets",
+        "onecentlin.phpunit-snippets",
+
+        // Server - Remote Development Pack //
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-wsl",
+        "ms-azuretools.vscode-containers", // docker
+
+        // Project
+        "alefragnani.project-manager",
+
+        // Git Extension Pack //
+        "codezombiech.gitignore",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "waderyan.gitblame",
+        "ziyasal.vscode-open-in-github",
+
+        // ---------- //
+        // - USEFUL - //
+        // ---------- //
+
+        // ai //
+        "google.geminicodeassist",
+        "codeium.codeium", // windsurf
+        "continue.continue", // autocomplete slow
+        
+
+        // color //
+        "aaron-bond.better-comments",
+        "johnpapa.vscode-peacock",
+        "mechatroner.rainbow-csv",
+        "medo64.render-crlf",
+        "oderwat.indent-rainbow",
+        "wayou.vscode-todo-highlight",
+
+        // theme //
+        "pkief.material-icon-theme",
+        "vscode-icons-team.vscode-icons",
+
+        // Frontend //
+        "anbuselvanrocky.bootstrap5-vscode", // prefix b5
+        "christian-kohler.npm-intellisense",
+        "ecmel.vscode-html-css",
+        "firefox-devtools.vscode-firefox-debug",
+        "hbenl.vscode-test-explorer",
+        "mattpocock.ts-error-translator",
+        "orta.vscode-jest",
+        "thekalinga.bootstrap4-vscode",
+// zignd.html-css-class-completion // no live, very long 
+
+        // Backend //
+        "coozieki.php-implementor",
+        "devsense.composer-php-vscode",
+        "devsense.profiler-php-vscode",
+        "mrchetan.phpstorm-parameter-hints-in-vscode",
+        "ms-vscode.test-adapter-converter",
+        "muath-ye.composer-intelephense",
+        "neilbrayfield.php-docblocker",
+        "phproberto.vscode-php-getters-setters",
+        "thenouillet.symfony-vscode",
+        "xdebug.php-debug",
+
+        // linter
+        "dbaeumer.vscode-eslint",
+        "ecodes.vscode-phpmd",
+        "fterrag.vscode-php-cs-fixer",
+        "higoka.php-cs-fixer",
+        "junstyle.php-cs-fixer",
+        "mansoorkhan96.php-cs-fixer",
+        "sonarsource.sonarlint-vscode", // SonarQube
+        "streetsidesoftware.code-spell-checker",
+        "stylelint.vscode-stylelint",
+        "swordev.phpstan",
+        "wongjn.php-sniffer",
+
+        // format
+        "bierner.markdown-mermaid",
+        "dotjoshjohnson.xml",
+        "esbenp.prettier-vscode",
+        "janisdd.vscode-edit-csv",
+        "redhat.vscode-yaml",
+        "shd101wyy.markdown-preview-enhanced",
+        "yzhang.markdown-all-in-one",
+        "zainchen.json",
+
+        // db
+        "alexcvzz.vscode-sqlite",
+        "mongodb.mongodb-vscode",
+        "mtxr.sqltools",
+        "qwtel.sqlite-viewer",
+
+        // server
+        "formulahendry.docker-explorer",
+        "humao.rest-client",
+        "jeff-hykin.better-dockerfile-syntax",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+
+        // ai & autocomplete
+        "devsense.intelli-php-vscode",
+        "gitHub.copilot",
+        "gitHub.copilot-chat",
+        "saoudrizwan.claude-dev", // cline
+        "zencoderai.zencoder",
+// andrewbutson.vscode-openai // doesn't works
+// augment.vscode-augment // pay
+// danielsanmedium.dscodegpt // error localhost 54112
+// sourcegraph.cody-ai // doesn't works
+// tabnine.tabnine-vscode // pay
+
+        // project
+        "gruntfuggly.todo-tree",
+        "hediet.vscode-drawio",
+        "ms-vsliveshare.vsliveshare",
+
+        // tools
+        "adpyke.codesnap",
+        "alefragnani.Bookmarks",
+        "appulate.filewatcher",
+        "grapecity.gc-excelviewer",
+        "alefragnani.read-only-indicator",
+        "andycui.vscode-log-viewer-gb2312",
+        "berublan.vscode-log-viewer",
+        "chrmarti.regex",
+        "editorConfig.EditorConfig",
+        "formulahendry.code-runner",
+        "gitHub.vscode-github-actions",
+        "gruntfuggly.todo-tree",
+        "jeffersonLicet.snipped",
+        "kisstkondoros.vscode-gutter-preview",
+        "konstantin.wrapSelection",
+        "pnp.polacode",
+        "rangav.vscode-thunder-client",
+        "ryu1kn.edit-with-shell",
+        "ryu1kn.partial-diff",
+        "simonSiefke.svg-preview",
+        "wallabyjs.quokka-vscode",
+    ]
+}

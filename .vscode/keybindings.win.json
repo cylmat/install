@@ -1,0 +1,208 @@
+// file in /home/user/.config/Code/User/keybindings.json
+// Place your key bindings in this file to override the defaults
+
+//                         //
+// Linux Reset Keybindings //
+//                         //
+
+// Remove differences with Windows shortcuts on Linux in VsCode
+// see https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+[
+    // === GENERAL ===
+  {
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.closeWindow"
+  },
+
+    // === BASIC EDITING ===
+
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.copyLinesUpAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+a",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "",
+    "when": "editorTextFocus"
+  },
+  
+    // === NAVIGATION ===
+  {
+    "key": "alt+left",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+alt+6",
+    "command": ""
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+shift+6",
+    "command": ""
+  },
+
+  // === SEARCH TOGGLES ===
+  {
+    "key": "alt+c",
+    "command": "toggleFindCaseSensitive",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+r",
+    "command": "toggleFindRegex",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+w",
+    "command": "toggleFindWholeWord",
+    "when": "editorFocus"
+  },
+
+  // === MULTI-CURSOR ===
+  {
+    "key": "ctrl+alt+up",
+    "command": "editor.action.insertCursorAbove",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+down",
+    "command": "editor.action.insertCursorBelow",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+down",
+    "command": "cursorColumnSelectDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+up",
+    "command": "cursorColumnSelectUp",
+    "when": "editorTextFocus"
+  },
+
+  // === LANGUAGE EDITING ===
+  {
+    "key": "shift+alt+f",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+f12",
+    "command": "editor.action.peekDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor"
+  },
+  {
+    "key": "ctrl+shift+f10",
+    "command": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor"
+  },
+
+  // === EDITOR MANAGEMENT ===
+  {
+    "key": "ctrl+f4",
+    "command": "workbench.action.closeActiveEditor"
+  },
+
+  // === FILE MANAGEMENT ===
+  {
+    "key": "ctrl+k s",
+    "command": "workbench.action.files.saveAll"
+  },
+
+  // === DISPLAY ===
+  {
+    "key": "ctrl+shift+u",
+    "command": "workbench.action.output.toggleOutput"
+  },
+  {
+    "key": "ctrl+k ctrl+h",
+    "command": "workbench.action.output.toggleOutput"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.terminal.new" // FROM LINUX KEYBINDING
+  },
+
+  // === TERMINAL ===
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.terminal.copySelection",
+    "when": "terminalFocus && terminalHasSelection"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "",
+    "when": "terminalFocus && terminalHasSelection"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "workbench.action.terminal.paste",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.terminal.scrollUp",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+up",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.terminal.scrollDown",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+down",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+home",
+    "command": "workbench.action.terminal.scrollToTop",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+home",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+end",
+    "command": "workbench.action.terminal.scrollToBottom",
+    "when": "terminalFocus"
+  },
+   {
+    "key": "shift+end",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  // -windows reset-
+
+
+    
+]

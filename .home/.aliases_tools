@@ -1,0 +1,52 @@
+#####################################
+### Resume of custom cmd for memo ###
+#####################################
+
+# use
+# curl https://raw.githubusercontent.com/cylmat/docs/refs/heads/main/install/.home/.aliases_tools > ~/.aliases_tools
+
+# useful cli urls
+alias my='echo "
+- URL -
+https://designer.mocky.io
+https://httpbin.org/legacy
+https://dummyjson.com/users/1
+https://jsonplaceholder.typicode.com/todos/1
+https://hn.algolia.com/api/v1/search?query=react
+https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets
+
+- COMMON -
+busybox, nix, nu(shell)
+
+- DEV & DATA -
+gron, iredis, jq, minikube, tidy-viewer
+tig, tmux, tmuxinator, vim
+> k9s, kdash, lazygit, lazydocker
+
+- ENCRYPT
+openssl, uuidgen
+
+- FILES & LOGS -
+bat, ccze, eza, fd, fzf, fzy, icdiff, 
+rsync, tre, ugrep, ranger, vifm
+
+- FUN -
+cmatrix, cowsay, figlet, fortune, lolcat, paclear, nms, sl
+
+- HELPER & AI -
+cht(.sh), chatgpt, yai
+claud, copilot, gemini
+
+- MONITOR & INFO -
+btop, duf, fastfetch, lshw, ncdu, procs, sampler
+
+- NETWORK -
+bandwhich, dig, lsof, netstat, nmap, tcpdump, ss
+
+- TRAIN -
+ttyper, vimgolf
+
+- ZSH -
+als, C-o, cph, cpf, z, zsh-bench
+"'
+

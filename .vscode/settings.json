@@ -1,0 +1,222 @@
+// Useful //
+// multicursor on search : Ctrl Shift + L
+
+{
+    // claude
+
+    "claudeCodeChat.wsl.enabled": false,
+    "claudeCodeChat.wsl.distro": "Ubuntu-22.04",
+    "claudeCodeChat.wsl.nodePath": "$HOME/.nvm/versions/node/v18.20.8/bin/node",
+    "claudeCodeChat.wsl.claudePath": "/home/linuxbrew/.linuxbrew/bin/claude",
+    "claudeCodeChat.permissions.yoloMode": false,
+    "claudeCode.preferredLocation": "panel",
+
+    "chat.agent.enabled": false,
+    "chat.agent.thinkingStyle": "none",
+    "chat.emptyChatState.enabled": false,
+    "chat.implicitContext.suggestedContext": false,
+    // "chat.instructionsFilesLocations": { "./.copilot/regles-metier": true }
+    "chat.math.enabled": false,
+    "chat.mcp.access": "none",
+
+    //
+
+    "console": "integratedTerminal",
+    "debug.internalConsoleOptions": "neverOpen",
+
+    // editor
+    
+    "editor.bracketPairColorization.enabled": true,
+    "editor.codeActionsOnSave": {},
+    "editor.fontFamily": "JetBrains Mono, FiraCode Nerd Font, Fira Code, Consolas, Courier New, monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.fontWeight": "300",
+    "editor.guides.bracketPairs": true,
+    "editor.letterSpacing": 1,
+    "editor.lineHeight": 20,
+    "editor.linkedEditing": true, // Auto-rename tags
+    "editor.renderWhitespace": "all",
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+
+      // keep vscode editor focus with copilot enabled
+      // Your focus moves because Copilot + Chat auto UI steals it
+      "editor.inlineSuggest.enabled": false,
+      "chat.focusWindowOnOpen": false,
+      "github.copilot.inlineSuggest.enable": false, // set true if copilot not enabled
+
+    // @https://www.alveeakand.com/how-to-modify-themes-in-vscode
+    // (optional) "editor.semanticHighlighting.enabled": false, 
+    // get attributes with "Developer Inspect Editor Tokens And Scope"
+    
+    "editor.tokenColorCustomizations": {
+        // global
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "constant.language",
+                    "keyword.control",
+                    "storage.modifier", 
+                    "storage.type", 
+                    "string.quoted.double",
+                    "string.quoted.single"
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            }
+        ],
+        // specific theme
+        "[Default Dark Modern]": {
+            "textMateRules": [{
+                // Change color of php attributes
+                "scope": "meta.attribute.php",
+                "settings": {
+                    "foreground": "#6a6",
+                    "fontStyle": "italic"
+                }
+            }]
+        },
+    },
+
+    "emmet.excludeLanguages": [
+        "markdown",
+        "php",
+        "js",
+        "javascript",
+        "ts",
+        "typescript",
+        "tsx",
+        "*"
+    ],
+
+ "explorer.autoReveal": true, // (default true) select file when click on tab 
+
+    "files.eol": "\n",
+    "files.autoSave": "afterDelay",
+    "files.associations": {
+        "*.cnf": "properties"
+    },
+    "git.terminalAuthentication": false,
+    "git-graph.contextMenuActionsVisibility": {},
+    "git-graph.defaultColumnVisibility": {
+        "Author": true,
+        "Commit": true,
+        "Date": true
+    },
+    "intelephense.files.exclude": [
+        "**/.DS_Store/**",
+        "**/.git/**",
+        "**/.hg/**",
+        "**/.history/**",
+        "**/.svn/**",
+        "**/bower_components/**",
+        "**/cache/**",
+        "**/CVS/**",
+        "**/node_modules/**",
+        "**/vendor/**/vendor/**",
+        "**/vendor/**/{Tests,tests}/**"
+    ],
+    "php": {
+        "files.exclude": {
+            "**/.DS_Store": true,
+            "**/.git": true,
+            "**/.hg": true,
+            "**/.svn": true,
+            "**/.vscode": true,
+            "**/cache": true,
+            "**/docs": true,
+            "**/node_modules": true,
+            "**/upgrade": true,
+            "**/uploads": true,
+            "/var/www/var": true
+        }
+    },
+    "php.suggest.basic": false,
+    "phpGettersSetters.getterTemplate": "/root/.config/getter.js",
+    "phpGettersSetters.setterTemplate": "/root/.config/setter.js",
+    "search.useIgnoreFiles": false,
+    "showOutput": "never",
+    "symfony-vscode.phpExecutablePath": "/usr/local/bin/php",
+    "sync.autoDownload": true,
+    "sync.autoUpload": true,
+    "sync.forceUpload": true,
+    "sync.quietSync": true,
+
+    // terminal
+    
+    "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font, monospace",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "terminal.integrated.profiles.windows": {
+        "Ubuntu (WSL)": {
+            "args": [
+                "-d",
+                "Ubuntu-22.04"
+            ],
+            "path": "C:\\WINDOWS\\System32\\wsl.exe"
+        },
+        "PowerShell": {
+            "icon": "terminal-powershell",
+            "source": "PowerShell"
+        }
+    },
+
+    // vim
+    
+    "vim.commandLineModeKeyBindings": [],
+    "vim.easymotion": true,
+     "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["q", "q"],
+            "after": "<Esc>"
+        }
+    ],
+     "vim.history": 500,
+     "vim.vimrc.enable": true
+     // .vscodevimrc MUST BE in C:\HOME_Windows\Users.., not in WSL home ~/..
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-f>": false,
+        "<C-v>": false,
+        "<C-x>": false,
+        "<C-y>": false,
+        "<C-z>": false
+    },
+    "vim.hlsearch": true,
+    "vim.leader": "<Space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<Leader>", "r"],
+          "after": ["<C-r>"]
+        },
+        {
+            "before": ["<Leader>", "u"],
+            "after": ["<C-u>"]
+        },
+        {
+            "before": ["<Leader>", "d"],
+            "after": ["<C-d>"]
+        }
+    ],
+    "vim.smartRelativeLine": true,
+    "vim.sneak": true,
+    "vim.startInInsertMode": true,
+    "vim.statusBarColors.easymotionmode": "",
+    "vim.statusBarColorControl": true,
+
+    "window.zoomLevel": -1,
+    "workbench.colorCustomizations": {
+        "editorUnnecessaryCode.border": "#663355",
+        "editorUnnecessaryCode.foreground": "#dd7aab",
+         "statusBar.background": "#5f0000",
+        "statusBar.noFolderBackground": "#5f0000",
+        "statusBar.debuggingBackground": "#5f0000",
+        "statusBar.foreground": "#ffffff",
+        "statusBar.debuggingForeground": "#ffffff"
+    }
+}

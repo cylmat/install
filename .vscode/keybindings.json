@@ -1,0 +1,39 @@
+// file in /home/user/.config/Code/User/keybindings.json
+// Place your key bindings in this file to override the defaults
+
+
+    //             //
+    // Custom keys //
+    //             //
+
+    // editor
+    {
+        "key": "ctrl+[Period]",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+q", // Easy comment line with keyboard without Right Ctrl touch
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // terminal fix
+    {
+        "key": "ctrl+[Quote]",
+        "command": "workbench.action.terminal.focus",
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    },
+    {
+        "key": "ctrl+shift+[Quote]",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    },
+
+    // workbench
+    {
+        "key": "ctrl+[BracketLeft]",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top'"
+    },
+]

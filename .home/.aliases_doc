@@ -1,0 +1,72 @@
+##############
+### Crypto ###
+##############
+
+echo "SAMPLE:
+echo -n 'test' | git hash-object --stdin
+git hash-object file.txt
+
+echo 'test' | md5sum
+echo 'test' | sha1sum
+echo 'test' | base64 --encode
+
+echo -n 'test' | openssl enc -base64
+echo -n "test" | openssl enc -e -aes-256-cbc -a -salt
+"
+
+##################
+### NET cheats ###
+##################
+
+alias netcheat='echo "
+curl -L ipconfig.me
+
+# lsof -i:22 tcp:3306
+lsof -nP -i
+
+# (n)o domain resolv (l)isten
+nc -v -n 8.8.8.8 1-1000 
+nc -l localhost 80      
+
+# (p)rog (l)isten (u)dp (n)um (t)cp 
+netstat -plunt
+ss -plunt
+
+# (a)ll (n)um (o)timer
+netstat -ano
+
+# (s)can TCP, (s)can UDP, enable (O)S detect
+nmap -sTU -O 127.0.0.1
+
+(i)nterface (n)o host convertion
+tcpdump -n -i eth0
+"'
+
+####################
+### Helpers urls ###
+####################
+
+alias docs='echo "
+- DOCS -
+busy:  https://busybox.net
+delta: https://dandavison.github.io/delta
+nix:   https://nix.dev/manual/nix/2.24
+nnn:   https://github.com/jarun/nnn/wiki/Usage
+nush:  https://nushell.sh/book
+
+- HELPERS -
+cheat:  https://cheat.sh
+shell:  https://explainshell.com
+yeoman: https://yeoman.io
+
+- STACK BOX -
+devilbox:  http://devilbox.org
+meanjs:    http://meanjs.org
+openresty: https://openresty.org
+phpdocker: https://phpdocker.io
+
+- GENERAL -
+docs:   https://github.com/cylmat/docs
+cheats: https://github.com/cylmat/cheats
+useful: https://cylmat.github.io/useful
+"'

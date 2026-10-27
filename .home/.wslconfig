@@ -1,0 +1,11 @@
+[wsl2]
+memory=12GB
+swap=0
+processors=2
+localhostForwarding=true
+swapfile=D:\\Ubuntu\\temp\\wsl-swap.vhdx
+kernelCommandLine=cgroup_no_v1=all
+
+#[interop]
+#enabled = false
+#appendWindowsPath = false

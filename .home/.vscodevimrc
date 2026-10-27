@@ -1,0 +1,112 @@
+
+"""""""""""""""""""""
+"""     VSCODE    """
+"""""""""""""""""""""
+"if exists('g:vscode')
+"endif
+
+
+" --- or let mapleader="\<Space>"
+" must be first defined
+" define Space as Leader
+ " Change VScode Ctrl binding to Space 
+" :echo mapleader or :let mapleader
+" Leader to <Space>
+""noremap <Space> <Nop>
+" map <Space> <Leader>
+let mapleader = " "
+
+
+
+" Set this configuration in VsCode settings to disable vim plugin keys
+" @see https://vim.rtorr.com/
+" ctrl a: increment           -> select all
+" ctrl c: back to normal mode -> copy
+" ctrl e: scroll line up      -> not used
+" ctrl f: page forward        -> find in files
+" ctrl i: next jump           -> not used
+" ctrl o: previous jump       -> open file
+" ctrl v: visual block        -> paste
+" ctrl x: decrement           -> paste
+" ctrl y: scroll line up      -> redo
+" ctrl z: suspend vim in bg   -> undo
+"vim.handleKeys": {
+    "<C-a>": false,
+    "<C-c>": false,
+    "<C-f>": false,
+    "<C-i>": false,
+    "<C-o>": false,
+    "<C-v>": false,
+    "<C-x>": false,
+    "<C-y>": false,
+    "<C-z>": false
+"}
+
+""""""""""
+" NORMAL "
+""""""""""
+
+""" navigation
+" b back, f forward, u up, d down
+nnoremap <leader>b <C-b>
+nnoremap <leader>d <C-d>
+nnoremap <leader>f <C-f>
+nnoremap <leader>u <C-u>
+vnoremap <leader>b <C-b>
+vnoremap <leader>d <C-d>
+vnoremap <leader>f <C-f>
+vnoremap <leader>u <C-u>
+
+""" Numbers 
+" a increment, x decrement
+nnoremap <leader>a <C-a>
+nnoremap <leader>x <C-x>
+
+""" jumps
+" i next, o previous
+nnoremap <leader>i <C-i>
+nnoremap <leader>o <C-o>
+
+""" Visual block
+nnoremap <leader>v <C-v>
+
+""""""""""
+" INSERT "
+""""""""""
+
+" Vim's Vscode plugins doesn't use localleader
+" so use litteral "\" instead
+
+""" Editing
+" c-h delete char before
+" c-w delete word before
+" c-u delete line before
+inoremap \h <C-h>
+inoremap \w <C-w>
+inoremap \u <C-u>
+
+" c-j add line break
+inoremap \j <C-j>
+
+" c-t indent
+" c-d de-indent
+inoremap \t <C-t>
+inoremap \d <C-d>
+
+" c-n insert next match
+" c-p insert previous match
+inoremap \n <C-n>
+inoremap \p <C-p>
+
+" c-r insert register X content
+" c-o fire one Normal-command
+inoremap \r <C-r>
+inoremap \o <C-o>
+
+
+
+""" plugins """
+
+" surround  cs'"
+" sneak s{char}{char}
+" easymotion <Leader><Leader>f{char}

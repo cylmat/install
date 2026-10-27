@@ -1,0 +1,131 @@
+# @see https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+#
+# git config --local|global|system --edit
+
+[alias]
+    ladog = log --all --oneline --decorate --graph
+    ldh= log --oneline --decorate develop..HEAD
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    lod = log --oneline --decorate
+    lsign = ls-files -o -i --exclude-standard
+    rid = rebase -i develop
+    ref = reflog
+    rev-oh = rev-list origin..HEAD
+    subtree_add = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+    subtree_up = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+
+    # This commits everything in the working directory and does a hard reset to remove that commit
+    unstage = 'reset HEAD --'
+    uncommit = reset HEAD~1 --mixed # Uncommit previous 'git commit'
+    wipe = !"git add -A &amp;&amp; git commit -qm 'WIPE SAVEPOINT' &amp;&amp; git reset HEAD~1 --hard"
+
+    # files
+    ls = ls-tree --name-only -r HEAD
+    ign = ls-files -o -i --exclude-standard
+    ls-ign = ls-files -o -i --exclude-standard
+    ls-ignored = ls-files -o -i --exclude-standard
+    ls-mod = ls-files -m
+    ls-modified = ls-files -m
+    ls-del = ls-files -d
+    ls-deleted = ls-files -d
+    ls-unm = ls-files -u
+    ls-unmerged = ls-files -u
+
+    # hash
+    current = !sh -c 'git name-rev --tags --name-only $(git rev-parse HEAD)'
+    # List all git tags ordered by date
+    tags = "!git for-each-ref --sort=taggerdate --format '%(tag)%09%(taggerdate:raw)%09%(*authorname)%09%(*subject)' refs/tags | awk '{print $1\"\t\t\"strftime(\"%F %H:%M\", $2)\"\t\"$4\" \"$5\" \t\t\"$6\" \"$7\" \"$8\" \"$9\" \"$10}'"
+
+    # log
+    gpg = log --show-signature
+    lg = log --stat --abbrev-commit --show-signature
+    tree = log --graph --decorate --abbrev-commit --branches --tags --remotes --date=short --pretty=format:'%C(yellow)%h%Creset-%C(cyan)(%ai%x08%x08%x08%x08%x08%x08) %ar%Creset%C(bold green)%d%Creset %s %Creset %C(cyan)[%cn]%Creset'
+    
+    # short
+    dump = cat-file -p
+    type = cat-file -t
+    tidy = "rebase -i @{upstream}.."
+
+    # From stackoverflow.com / visualizing-branch-topology-in-git
+    lg1 = log --graph --abbrev-commit --all --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' 
+    lg2 = log --graph --abbrev-commit --all --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' 
+    lg = !"git lg1"
+[apply]
+    whitespace = warn # Warn about whitespace issues defined in core.whitespace
+[branch]
+    master.mergeoptions = --no-ff
+    autosetuprebase = always # (for auto pull rebase )
+[color]
+    ui = true
+    status = auto
+    branch = auto   # (color.branch=auto)
+    branch.upstream = cyan
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+[core]
+    # linux: input, win: true (both sides)
+    autocrlf = input
+    editor = vim
+    excludesfile = '<file>'
+    ignorecase = false
+    pager = less -x1,5 # Better git diff view
+    safecrlf = true
+    # whitespace = blank-at-eol,blank-at-eof,space-before-tab,trailing-space
+    
+[credential]
+	helper = store --file ~/.git-credentials
+	helper = cache --timeout 30000
+	
+	# ask one time then store it
+	helper=store
+
+#[credential "https://example.com"]#
+	#username = your_user
+	#helper = "!f() { test \"$1\" = get && echo \"password=$(cat $HOME/.secret)\"; }; f"   
+ 
+[diff]
+    wordRegex = . 
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[help]
+    format = html
+[http]
+    postBuffer = 52428800
+    # if error Received HTTP code 407 from proxy after CONNECT
+    proxy = 'http://user:pass@proxy_url:8080'
+[merge]
+    tool = vimdiff
+    ff = false # false|only
+    summary = true
+[pull]
+    rebase = true
+    rebase = preserve
+[push]
+    default = simple # simple|upstream
+[rebase]
+    stat = true # visuel des chagements
+    missingCommitsCheck = warn 
+[ssh]
+    postBuffer = 52428800
+[status]
+    showUntrackedFiles = all
+[tags]
+    sort
+[user]
+    # git config --global user.name "Sam Smith"
+    # git config --global user.email sam@example.com

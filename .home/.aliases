@@ -1,0 +1,113 @@
+# @ref
+# @https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
+
+# Copy file
+# curl https://raw.githubusercontent.com/cylmat/docs/refs/heads/main/install/.home/.aliases > ~/.aliases
+
+[[ -f ~/.aliases_doc ]] && source ~/.aliases_doc;
+[[ -f ~/.aliases_find ]] && source ~/.aliases_find;
+[[ -f ~/.aliases_ports ]] && source ~/.aliases_ports; 
+[[ -f ~/.aliases_tools ]] && source ~/.aliases_tools; 
+
+### COMMON ###
+
+alias ..="cd .."
+alias .aliases="vim ~/.aliases"
+alias .bashrc="vim ~/.bashrc"
+alias .tmux="vim ~/.tmux.conf"
+alias .vimrc="vim ~/.vimrc"
+alias .zshrc="vim ~/.zshrc"
+alias c="clear"
+alias dfh='df -h'
+alias dev="git checkout dev || git checkout develop"
+
+### TOOLS ###
+
+alias bat="batcat"
+alias cheat="cht"
+alias dc="docker compose"
+alias dce="docker compose exec"
+alias dcs='docker compose config --services'
+alias dk="docker"
+alias fdf="fdfind"
+alias k="kubectl"
+alias h="helm"
+alias mnk="minikube"
+alias sym="symfony"
+
+### cheats ###
+# use curl -o $HOME/cheats/git-one-cheat.md https://raw.githubusercontent.com/cylmat/cheats/refs/heads/main/onepage/git-one-cheat.md
+alias cht-git="cat $HOME/cheats/git-one-cheat.md"
+alias cht-vim="cat $HOME/cheats/vim-one-cheat.md"
+alias cht-vsc="cat $HOME/cheats/vsc-one-cheat.md"
+alias cht-zsh="cat $HOME/cheats/zsh-one-cheat.md"
+
+### INSTALL
+alias cht_install="curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh"
+
+### OMZ zsh ###
+# copybuffer is Ctrl-O
+if alias cp >/dev/null 2>&1; then
+    unalias cp
+fi
+alias cph="copypath"
+alias cpf="copyfile"
+
+### LIST ###
+export LS_OPTIONS='--color=auto'
+eval "`dircolors`"
+# alias ls='ls $LS_OPTIONS'
+# alias ll='ls $LS_OPTIONS -l'
+# alias l='ls $LS_OPTIONS -lA'
+
+# use eza
+# https://github.com/eza-community/eza
+# ld=’eza -lD’
+# lf=’eza -lf --color=always | grep -v /’
+# lh=’eza -dl .* --group-directories-first’
+# ll=’eza -al --group-directories-first’
+# ls=’eza -alf --color=always --sort=size | grep -v /’
+# lt=’eza -al --sort=modified’
+
+### GREP ###
+alias grep='grep --color=auto'
+alias egrep='grep -E'
+alias fgrep='grep -F'
+
+### TMUX built'in ###
+# OMZ tmux build_tmux_alias
+alias ta="tmux attach -t"
+alias tad="tmux attach -d -t"
+alias ts="tmux new-session -s"
+alias tkss="tmux kill-session -t"
+
+### HISTORY ###
+function _historyfzf () {
+  $(history | fzf | grep -oE [^0-9]+)
+}
+alias hf="_historyfzf"
+
+### ChatGpt
+_chat() {
+  tmpfile=$(mktemp /tmp/chatgpt.req.XXXXXX)
+  trap 'rm -f "$tmpfile"' EXIT
+  echo "$@" > "$tmpfile"
+  chatgpt -m gpt-4o-mini --prompt-from-file "$tmpfile"
+}
+alias chat=_chat
+
+# chatGpt for shell prompt
+_shat() {
+  tmpfile=$(mktemp /tmp/chatgpt.req.XXXXXX)
+  trap 'rm -f "$tmpfile"' EXIT
+  echo "$@. Reply as a directly usable bash command line, with a quick explaination of the command, options and arguments, without other text." > "$tmpfile" 
+  chatgpt -m gpt-4o-mini --prompt-from-file "$tmpfile"
+}
+alias shat=_shat
+
+##### # others
+
+# @https://www.vimgolf.com
+# alias vimgolf="vimgolf || sudo apt install -y rubygems && sudo gem install vimgolf && vimgolf setup && sudo gem install vimgolf-finder"
+alias vimgolfd="docker run --rm -it ghcr.io/filbranden/vimgolf" # <vimgolf_id>
+

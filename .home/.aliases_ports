@@ -1,0 +1,180 @@
+ # $HOME/.aliases_ports
+
+# ==================================================
+# PORTS / NETWORKING — REAL-WORLD ALIASES & FUNCTIONS
+# ==================================================
+#
+# Tools used:
+#   ss, lsof, nc (netcat), fzf, kill
+#
+# Goal:
+#   - list open ports
+#   - see what listens on a port
+#   - watch traffic
+#   - test connectivity
+#   - kill offending processes
+#
+# ==================================================
+
+# ------------------------------
+# QUICK OVERVIEWS
+# ------------------------------
+
+# List all listening ports (TCP + UDP)
+alias ports='ss -tulnp'
+
+# Same, numeric only (faster, scriptable)
+alias portsn='ss -tuln'
+
+# TCP only
+alias portstcp='ss -tlpn'
+
+# UDP only
+alias portsudp='ss -ulpn'
+
+# ------------------------------
+# QUERY A SPECIFIC PORT
+# ------------------------------
+
+# What is listening on port?
+port() {
+  ss -tulnp | grep ":$1 "
+}
+
+# lsof version (more details)
+portl() {
+  lsof -nP -i :"$1"
+}
+
+# ------------------------------
+# PROCESS ↔ PORT MAPPING
+# ------------------------------
+
+# Ports opened by a process name
+portsby() {
+  lsof -nP -i | rg "$1"
+}
+
+# Ports opened by PID
+ports_pid() {
+  lsof -nP -p "$1"
+}
+
+# ------------------------------
+# INTERACTIVE (FZF)
+# ------------------------------
+
+# Pick a listening port interactively
+portsfzf() {
+  ss -tulnp | fzf
+}
+
+# Pick port → kill owning process
+killport() {
+  lsof -nP -i :"$1" \
+  | awk 'NR>1 {print $2}' \
+  | uniq \
+  | xargs -r kill -9
+}
+
+# Interactive version
+killportf() {
+  lsof -nP -i \
+  | fzf \
+  | awk '{print $2}' \
+  | xargs -r kill -9
+}
+
+# ------------------------------
+# CHECK CONNECTIVITY
+# ------------------------------
+
+# Test TCP connection (quick)
+checkport() {
+  nc -zv "$1" "$2"
+}
+
+# Example:
+# checkport localhost 5432
+
+# Timeout version
+checkportt() {
+  nc -zvw 2 "$1" "$2"
+}
+
+# ------------------------------
+# LISTEN ON A PORT (DEBUG)
+# ------------------------------
+
+# Simple TCP listener (stdout)
+listen() {
+  nc -lvnp "$1"
+}
+
+# UDP listener
+listenu() {
+  nc -luvp "$1"
+}
+
+# ------------------------------
+# SEND DATA TO A PORT
+# ------------------------------
+
+# Send stdin to host:port
+sendport() {
+  nc "$1" "$2"
+}
+
+# Example:
+# echo "hello" | sendport localhost 9000
+
+# ------------------------------
+# WATCH / MONITOR
+# ------------------------------
+
+# Watch port table live
+watchports() {
+  watch -n 1 'ss -tulnp'
+}
+
+# Watch a specific port
+watchport() {
+  watch -n 1 "ss -tulnp | grep :$1"
+}
+
+# ------------------------------
+# COMMON DEBUG SCENARIOS
+# ------------------------------
+
+# "Why is my app not starting?"
+# → see what already listens
+alias whoisusing='ports'
+
+# "What is on port 8080?"
+# → port 8080
+
+# "Kill whatever uses port 3000"
+# → killport 3000
+
+# "Is DB reachable?"
+# → checkport localhost 5432
+
+# "Listen and see what hits my port"
+# → listen 9000
+
+# ------------------------------
+# LEGACY (IF ss NOT AVAILABLE)
+# ------------------------------
+
+alias ports_netstat='netstat -tulnp'
+
+# ------------------------------
+# CORE REMINDERS
+# ------------------------------
+#
+# ss     → fastest overview
+# lsof   → process ownership
+# nc     → connectivity & listening
+# fzf    → interactively choose
+#
+# ==================================================

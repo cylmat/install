@@ -1,0 +1,19 @@
+# ~/.config/starship.toml
+
+right_format = """$battery$time$memory_usage"""
+
+# see https://starship.rs/config/#kubernetes
+
+[kubernetes]
+style = '#555555'
+ format = '$symbol [$context( \($namespace\))]($style) in '
+ disabled = false 
+
+ [memory_usage]
+ disabled = false
+ 
+ [os]
+ disabled = false
+                                                                                                                                              
+ [git_metrics] 
+disabled = false  
