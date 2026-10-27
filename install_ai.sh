@@ -5,18 +5,21 @@
 ##########
 
 ### Claude code ###
-
+# @https://github.com/anthropics/skills/
 # use ANTHROPIC_API_KEY
+
 # claude plugin install mattpocock-skills@claude-plugins-official
+# /plugin marketplace add anthropics/skills
 
 brew install --cask claude-code
 
-### Copilot ###
 
+### Copilot ###
 # copilot plugin marketplace add mattpocock/skills
 # copilot plugin install mattpocock-skills@mattpocock
 
 brew install copilot-cli
+
 
 ### Gemini cli ###
 # gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
