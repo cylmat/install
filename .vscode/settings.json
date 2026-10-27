@@ -19,6 +19,7 @@
     // "chat.instructionsFilesLocations": { "./.copilot/regles-metier": true }
     "chat.math.enabled": false,
     "chat.mcp.access": "none",
+    "chat.plugins.enabled": true,
 
     //
 
