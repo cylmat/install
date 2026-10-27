@@ -49,7 +49,6 @@ curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download
 ### aiskill.market
 # @https://aiskill.market/
 
-curl -o ~/.claude/agents/code-reviewer.md https://raw.githubusercontent.com/VoltAgent/awesome-claude-code-subagents/main/categories/04-quality-security/code-reviewer.md
 
 ### skills.sh
 # @https://github.com/vercel-labs/skills
