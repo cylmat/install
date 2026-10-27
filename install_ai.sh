@@ -43,15 +43,19 @@ curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download
 # SKILLS #
 ##########
 
-### agenticskills.io ###
-# @https://agenticskills.io/skills/frontend-design
+### agenticskills.io
+# @https://agenticskills.io/skills/
 
-# @https://www.skills.sh
+### skills.sh
 # @https://github.com/vercel-labs/skills
 npx skills list -g 
 npx skills add anthropics/skills@frontend-design
 npx skills add vercel-labs/skills@find-skills
 
-# Matt Pocock
+### Matt Pocock
 # then use  cd ~/.agents; mkdir matt; mv * matt 
 npx skills@latest add mattpocock/skills
+
+### verified-skill
+# @https://verified-skill.com/
+npx vskill@latest list
