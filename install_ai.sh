@@ -7,26 +7,24 @@
 ### Claude code ###
 # @https://github.com/anthropics/skills/
 # use ANTHROPIC_API_KEY
-
+ 
+brew install --cask claude-code
 # claude plugin install mattpocock-skills@claude-plugins-official
 # /plugin marketplace add anthropics/skills
 
-brew install --cask claude-code
-
 
 ### Copilot ###
+
+brew install copilot-cli
 # copilot plugin marketplace add mattpocock/skills
 # copilot plugin install mattpocock-skills@mattpocock
 
-brew install copilot-cli
-
 
 ### Gemini cli ###
-# gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-# gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
-
 
 npm install -g @google/gemini-cli
+# gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
+# gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
 
 
 
@@ -45,7 +43,13 @@ curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download
 # SKILLS #
 ##########
 
+### agenticskills.io ###
+# @https://agenticskills.io/skills/frontend-design
+
+# @https://www.skills.sh
+# @https://github.com/vercel-labs/skills
 npx skills list -g 
+npx skills add anthropics/skills@frontend-design
 npx skills add vercel-labs/skills@find-skills
 
 # Matt Pocock
