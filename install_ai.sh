@@ -53,6 +53,7 @@ npx skills add anthropics/skills@frontend-design
 npx skills add vercel-labs/skills@find-skills
 
 ### Matt Pocock
+# @https://aihero.dev
 # then use  cd ~/.agents; mkdir matt; mv * matt 
 npx skills@latest add mattpocock/skills
 
