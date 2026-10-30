@@ -7,25 +7,40 @@
 ### Claude code ###
 # @https://github.com/anthropics/skills/
 # use ANTHROPIC_API_KEY
- 
+
 brew install --cask claude-code
-# claude plugin install mattpocock-skills@claude-plugins-official
-# /plugin marketplace add anthropics/skills
+
+echo "
+To install skills, run the following commands:
+
+claude plugin install mattpocock-skills@claude-plugins-official
+/plugin marketplace add anthropics/skills
+"
 
 
 ### Copilot ###
 
 brew install copilot-cli
-# copilot plugin marketplace add mattpocock/skills
-# copilot plugin install mattpocock-skills@mattpocock
+
+echo "
+To install skills, run the following commands:
+
+copilot plugin marketplace add mattpocock/skills
+copilot plugin install mattpocock-skills@mattpocock
+"
 
 
 ### Gemini cli ###
+# Antigravity CLI too ?
 
 npm install -g @google/gemini-cli
-# gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-# gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
 
+echo "
+To install skills, run the following commands:
+
+gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
+gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
+"
 
 
 

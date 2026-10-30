@@ -1,0 +1,66 @@
+INFO
+====
+
+General folders
+---------------
+
+```
+~/
+    .agents/
+        agents/         # dépôt commun éventuel (mais formats à adapter)
+        skills/         # skills partagés
+        instructions.md # instructions communes (AGENTS.md)
+    .claude/
+        agents/
+        rules/          # instructions spécifiques à Claude
+        skills/         # symlink:~/.agents/skills
+        CLAUDE.md
+    .copilot/
+        agents/
+        instructions/   # instructions spécifiques à Copilot
+        skills/         # symlink:~/.agents/skills
+        copilot-instructions.md
+    .gemini/
+        agents/
+        skills/         # symlink:~/.agents/skills
+        GEMINI.md
+```
+
+Configuration
+-------------
+
+Instructions:
+**General**
+Each tools must have its own instructions configuration
+- ~/.claude/CLAUDE.md
+- ~/.copilot/copilot-instructions.md
+- ~/.gemini/GEMINI.md
+**Specific**
+- ~/.claude/rules/*.md
+- ~/.copilot/instructions/*.md
+- Gemini do not have "specific" instructions
+
+Skills:
+- ~/.agents/skills is auto-discovered by Copilot and Gemini
+- ~/.claude/skills for Claude
+
+Agents:
+Each agent must be on its own tool configuration
+- ~/.claude/agents/
+- ~/.copilot/agents/
+- ~/.gemini/agents/
+
+
+Symlinks
+--------
+
+Just symlink ~/.agents/skills for instructions and Claude
+```shell
+mkdir -p ~/.agents/skills ~/.claude ~/.copilot ~/.gemini
+
+ln -s ~/.agents/instructions.md ~/.claude/CLAUDE.md
+ln -s ~/.agents/instructions.md ~/.copilot/copilot-instructions.md
+ln -s ~/.agents/instructions.md ~/.gemini/GEMINI.md
+
+ln -s ~/.agents/skills ~/.claude/skills
+```
