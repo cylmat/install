@@ -13,6 +13,7 @@
 
     "chat.agent.enabled": false,
     "chat.agent.thinkingStyle": "none",
+    "chat.automations.enabled": true,
     "chat.emptyChatState.enabled": false,
     "chat.customizations.marketplace.enabled": true,
     "chat.implicitContext.suggestedContext": false,
