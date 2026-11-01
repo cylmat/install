@@ -43,6 +43,11 @@ gemini skills install https://github.com/mattpocock/skills.git --path skills/pro
 "
 
 
+### OPENCODE ###
+# @https://opencode.ai/
+
+npm install -g @opencode/cli
+
 
 ###########
 # DESKTOP #
