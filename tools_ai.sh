@@ -4,30 +4,17 @@
 ### AI ###
 ##########
 
+
 ### Claude code ###
 # @https://github.com/anthropics/skills/
 # use ANTHROPIC_API_KEY
 
 brew install --cask claude-code
 
-echo "
-To install skills, run the following commands:
-
-claude plugin install mattpocock-skills@claude-plugins-official
-/plugin marketplace add anthropics/skills
-"
-
 
 ### Copilot ###
 
 brew install copilot-cli
-
-echo "
-To install skills, run the following commands:
-
-copilot plugin marketplace add mattpocock/skills
-copilot plugin install mattpocock-skills@mattpocock
-"
 
 
 ### Gemini cli ###
@@ -35,12 +22,6 @@ copilot plugin install mattpocock-skills@mattpocock
 
 npm install -g @google/gemini-cli
 
-echo "
-To install skills, run the following commands:
-
-gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
-"
 
 
 ### OPENCODE ###
@@ -49,9 +30,25 @@ gemini skills install https://github.com/mattpocock/skills.git --path skills/pro
 npm install -g @opencode/cli
 
 
-###########
-# DESKTOP #
-###########
+###############
+### INSTALL ###
+###############
+
+
+# Just symlink ~/.agents/skills for instructions and Claude
+```shell
+mkdir -p ~/.agents/skills/custom ~/.agents/agents/custom ~/.claude ~/.copilot ~/.gemini
+
+ln -s ~/.agents/instructions.md ~/.claude/CLAUDE.md
+ln -s ~/.agents/instructions.md ~/.copilot/copilot-instructions.md
+ln -s ~/.agents/instructions.md ~/.gemini/GEMINI.md
+```
+
+
+
+###############
+### DESKTOP ###
+###############
 
 ### GOOSE
 curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash
@@ -59,20 +56,68 @@ curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download
 
 
 
-##########
-# SKILLS #
-##########
+
+###############
+### PLUGINS ###
+###############
+
+### CUSTOM
+
+claude plugin marketplace add ~/.claude/plugins/my-plugin
+claude plugin install my-plugin@my-marketplace
+
+
+### MATT POCOCK
+# https://aihero.dev
+
+claude plugin install mattpocock-skills@claude-plugins-official
+claude plugin marketplace add anthropics/skills
+
+copilot plugin marketplace add mattpocock/skills
+copilot plugin install mattpocock-skills@mattpocock
+
+gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
+gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
+
+
+
+### AWESOME SKILLS ###
+# https://awesome-skills.com
+
+### Seth Hobson
+# https://sethhobson.com
+# https://github.com/wshobson/agents
+
+claude plugin marketplace add wshobson/agents
+
+
+
+### AWESOME CLAUDE SKILLS ###
+# @https://awesomeclaude.ai/awesome-claude-skills
+
+
+##############
+### SKILLS ###
+##############
 
 ### agenticskills.io
-# @https://agenticskills.io/skills/
+# @https://agenticskills.io/skills
 
 ### aiskill.market
-# @https://aiskill.market/
+# @https://aiskill.market
+
+### ComposioHQ
+# @https://github.com/ComposioHQ/awesome-claude-skills
+
+### Mcpservers.org
+# @https://mcpservers.org/fr/agent-skills
+
+
 
 
 ### skills.sh
 # @https://github.com/vercel-labs/skills
-npx skills list -g 
+npx skills list -g
 npx skills add anthropics/skills@frontend-design
 npx skills add vercel-labs/skills@find-skills
 

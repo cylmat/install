@@ -52,19 +52,3 @@ Each agent must be on its own tool configuration
 - ~/.copilot/agents/
 - ~/.gemini/agents/
 
-
-Symlinks
---------
-
-Just symlink ~/.agents/skills for instructions and Claude
-```shell
-# mkdir -p ~/.agents/skills/custom ~/.agents/agents/custom ~/.claude ~/.copilot ~/.gemini
-
-ln -s ~/.agents/instructions.md ~/.claude/CLAUDE.md
-ln -s ~/.agents/instructions.md ~/.copilot/copilot-instructions.md
-ln -s ~/.agents/instructions.md ~/.gemini/GEMINI.md
-
-# Claude: use plugins with agents and skills, then run in Claude
-/plugin marketplace add ~/.claude/plugins/my-plugin
-/plugin install my-plugin@my-marketplace
-```
