@@ -1,6 +1,6 @@
 ---
-name: "Ask Agent - Default VsCode"
-description: "Answers questions about your code without making changes"
+name: ask
+description: "Default VsCode - Answers questions about your code without making changes"
 tools: ["view","grep","glob","rg","lsp","web_fetch","web_search","ask_user","report_intent","think","show_file","fetch_copilot_cli_documentation"]
 disable-model-invocation: true
 ---

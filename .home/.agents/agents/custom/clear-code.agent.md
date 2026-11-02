@@ -1,5 +1,5 @@
 ---
-name: Clear Code Agent
+name: clear-code
 description: Quality agent that clears code, enforces coding standards, and ensures best practices
 argument-hint: "a code or file to improve"
 ---

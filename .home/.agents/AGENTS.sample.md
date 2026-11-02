@@ -30,3 +30,5 @@ Application web de gestion de tâches. L’API est dans `src/api/` et l’interf
 - Ne pas modifier les fichiers générés dans `src/generated/`.
 - Ne pas ajouter de dépendance sans expliquer pourquoi.
 - Ne jamais inclure de secrets ou de clés API dans le dépôt.
+
+<!-- https://agents.md -->

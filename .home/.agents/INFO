@@ -56,11 +56,13 @@ Symlinks
 
 Just symlink ~/.agents/skills for instructions and Claude
 ```shell
-mkdir -p ~/.agents/skills ~/.claude ~/.copilot ~/.gemini
+# mkdir -p ~/.agents/skills/custom ~/.agents/agents/custom ~/.claude ~/.copilot ~/.gemini
 
 ln -s ~/.agents/instructions.md ~/.claude/CLAUDE.md
 ln -s ~/.agents/instructions.md ~/.copilot/copilot-instructions.md
 ln -s ~/.agents/instructions.md ~/.gemini/GEMINI.md
 
-ln -s ~/.agents/skills ~/.claude/skills
+# Claude
+ln -s ~/.agents/agents/custom ~/.claude/agents/custom
+ln -s ~/.agents/skills/custom ~/.claude/skills/custom
 ```
