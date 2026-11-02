@@ -13,11 +13,13 @@ General folders
     .claude/
         agents/
         rules/          # instructions spécifiques à Claude
-        skills/         # symlink:~/.agents/skills
+        plugins/
+        skills/         # can't read skills/childDirectory/SKILL.md, use plugin instead
         CLAUDE.md
     .copilot/
         agents/
         instructions/   # instructions spécifiques à Copilot
+        plugins/
         skills/         # symlink:~/.agents/skills
         copilot-instructions.md
     .gemini/
@@ -62,7 +64,7 @@ ln -s ~/.agents/instructions.md ~/.claude/CLAUDE.md
 ln -s ~/.agents/instructions.md ~/.copilot/copilot-instructions.md
 ln -s ~/.agents/instructions.md ~/.gemini/GEMINI.md
 
-# Claude
-ln -s ~/.agents/agents/custom ~/.claude/agents/custom
-ln -s ~/.agents/skills/custom ~/.claude/skills/custom
+# Claude: use plugins with agents and skills, then run in Claude
+/plugin marketplace add ~/.claude/plugins/my-plugin
+/plugin install my-plugin@my-marketplace
 ```

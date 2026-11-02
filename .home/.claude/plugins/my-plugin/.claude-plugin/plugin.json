@@ -1,0 +1,10 @@
+{
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "description": "Personal custom skills",
+  "skills": [
+    "./skills/commit-message",
+    "./skills/dot-sample",
+    "./skills/github-cheats-reader"
+  ]
+}

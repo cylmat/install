@@ -1,0 +1,14 @@
+{
+  "name": "my-marketplace",
+  "description": "Personal custom skills",
+  "owner": {
+    "name": "user"
+  },
+  "plugins": [
+    {
+      "name": "my-plugin",
+      "source": "./",
+      "description": "Personal custom skills"
+    }
+  ]
+}
