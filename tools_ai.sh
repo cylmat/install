@@ -120,6 +120,7 @@ claude plugin marketplace add wshobson/agents
 npx skills list -g
 npx skills add anthropics/skills@frontend-design
 npx skills add vercel-labs/skills@find-skills
+  # Usage: npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a claude-code
 
 ### Matt Pocock
 # @https://aihero.dev
