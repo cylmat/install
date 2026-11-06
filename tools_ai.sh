@@ -112,6 +112,9 @@ claude plugin marketplace add wshobson/agents
 ### Mcpservers.org
 # @https://mcpservers.org/fr/agent-skills
 
+### ClaudeSkills
+# @https://claudeskills.fr
+
 
 
 
