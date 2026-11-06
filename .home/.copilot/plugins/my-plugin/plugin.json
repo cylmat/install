@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Personal custom skills",
   "skills": [
-    "./skills/dot"
+    
   ]
 }

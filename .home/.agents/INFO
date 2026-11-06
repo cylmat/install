@@ -9,22 +9,22 @@ General folders
     .agents/
         agents/         # dépôt commun éventuel (mais formats à adapter)
         skills/         # skills partagés
-        instructions.md # instructions communes (AGENTS.md)
+        instructions.md # instructions communes Copilot + Gemini (AGENTS.md)
     .claude/
         agents/
         rules/          # instructions spécifiques à Claude
         plugins/
-        skills/         # can't read skills/childDirectory/SKILL.md, use plugin instead
+        skills/
         CLAUDE.md
     .copilot/
         agents/
         instructions/   # instructions spécifiques à Copilot
         plugins/
-        skills/         # symlink:~/.agents/skills
+        skills/
         copilot-instructions.md
     .gemini/
         agents/
-        skills/         # symlink:~/.agents/skills
+        skills/
         GEMINI.md
 ```
 
