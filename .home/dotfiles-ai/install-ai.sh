@@ -12,32 +12,33 @@ link() {
   ln -s "$source" "$target"
 }
 
-# printf '@%s/$global_agents_file\n' "$HOME" > "$claude/CLAUDE.md"
+dotfiles_dir="$HOME/.dotfiles-ai"
 global_agents_file="agents.global.md"
+# printf '@%s/$global_agents_file\n' "$HOME" > "$claude/CLAUDE.md"
 
 # CLAUDE #
 
-claude="$HOME/.claude"
+claude="$dotfiles_dir/.claude"
 mkdir -p "$claude"
-link "$HOME/claude/agents"        "$claude/agents"
-link "$HOME/claude/hooks"         "$claude/hooks"
-link "$HOME/claude/settings.json" "$claude/settings.json"
-link "$HOME/skills"               "$claude/skills"
-link "$HOME/$global_agents_file"  "$claude/CLAUDE.md"
+link "$dotfiles_dir/claude/agents"        "$claude/agents"
+link "$dotfiles_dir/claude/hooks"         "$claude/hooks"
+link "$dotfiles_dir/claude/settings.json" "$claude/settings.json"
+link "$dotfiles_dir/skills"               "$claude/skills"
+link "$dotfiles_dir/$global_agents_file"  "$claude/CLAUDE.md"
 
 # COPILOT #
 
-copilot="$HOME/.copilot"
+copilot="$dotfiles_dir/.copilot"
 mkdir -p "$copilot"
-link "$HOME/copilot/agents"      "$copilot/agents"
-link "$HOME/skills"              "$copilot/skills"
-link "$HOME/$global_agents_file" "$copilot/copilot.instructions.md"
+link "$dotfiles_dir/copilot/agents"       "$copilot/agents"
+link "$dotfiles_dir/skills"               "$copilot/skills"
+link "$dotfiles_dir/$global_agents_file"  "$copilot/copilot.instructions.md"
 
 # GEMINI #
 
-gemini="$HOME/.gemini"
+gemini="$dotfiles_dir/.gemini"
 mkdir -p "$gemini"
-link "$HOME/skills" "$gemini/skills"
-link "$HOME/$global_agents_file" "$gemini/GEMINI.md"
+link "$dotfiles_dir/skills"               "$gemini/skills"
+link "$dotfiles_dir/$global_agents_file"  "$gemini/GEMINI.md"
 
 # OPENCODE #
