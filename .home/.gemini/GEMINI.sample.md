@@ -1,1 +1,0 @@
-# Facultatif : renvoie vers AGENTS.md
