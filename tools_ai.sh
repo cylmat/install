@@ -30,21 +30,6 @@ npm install -g @google/gemini-cli
 npm install -g @opencode/cli
 
 
-###############
-### INSTALL ###
-###############
-
-
-# Just symlink ~/.agents/skills for instructions and Claude
-```shell
-mkdir -p ~/.agents/skills/custom ~/.agents/agents/custom ~/.claude ~/.copilot ~/.gemini
-
-ln -s ~/.agents/instructions.md ~/.claude/CLAUDE.md
-ln -s ~/.agents/instructions.md ~/.copilot/copilot-instructions.md
-ln -s ~/.agents/instructions.md ~/.gemini/GEMINI.md
-```
-
-
 
 ###############
 ### DESKTOP ###
@@ -84,6 +69,7 @@ gemini skills install https://github.com/mattpocock/skills.git --path skills/pro
 ### AWESOME SKILLS ###
 # https://awesome-skills.com
 
+
 ### Seth Hobson
 # https://sethhobson.com
 # https://github.com/wshobson/agents
@@ -103,14 +89,13 @@ claude plugin marketplace add wshobson/agents
 ### agenticskills.io
 # @https://agenticskills.io/skills
 
-### aiskill.market
-# @https://aiskill.market
 
 ### ComposioHQ
 # @https://github.com/ComposioHQ/awesome-claude-skills
 
 ### Mcpservers.org
 # @https://mcpservers.org/fr/agent-skills
+
 
 ### ClaudeSkills
 # @https://claudeskills.fr
@@ -120,6 +105,7 @@ claude plugin marketplace add wshobson/agents
 
 ### skills.sh
 # @https://github.com/vercel-labs/skills
+
 npx skills list -g
 npx skills add anthropics/skills@frontend-design
 npx skills add vercel-labs/skills@find-skills
