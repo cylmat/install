@@ -7,6 +7,13 @@ link() {
   local source="$1" target="$2"
   # Skip linking if the target is already a symlink to the source
   [[ -L "$target" && "$(readlink "$target")" == "$source" ]] && return
+  # Create backup if the target exists and is not a symlink to the source
+  if [[ -e "$target" && ! -L "$target" ]]; then
+    local backup="$target.bak.$RANDOM"
+    echo "Backing up existing file: $target to $backup"
+    mv "$target" "$backup"
+  fi
+  # Create symlink
   rm -rf -- "$target"
   mkdir -p "$(dirname "$target")"
   ln -s "$source" "$target"
