@@ -12,13 +12,13 @@ link() {
   ln -s "$source" "$target"
 }
 
-dotfiles_dir="$HOME/.dotfiles-ai"
+dotfiles_dir="$HOME/dotfiles-ai"
 global_agents_file="agents.global.md"
 # printf '@%s/$global_agents_file\n' "$HOME" > "$claude/CLAUDE.md"
 
 # CLAUDE #
 
-claude="$dotfiles_dir/.claude"
+claude="$HOME/.claude"
 mkdir -p "$claude"
 link "$dotfiles_dir/claude/agents"        "$claude/agents"
 link "$dotfiles_dir/claude/hooks"         "$claude/hooks"
@@ -28,7 +28,7 @@ link "$dotfiles_dir/$global_agents_file"  "$claude/CLAUDE.md"
 
 # COPILOT #
 
-copilot="$dotfiles_dir/.copilot"
+copilot="$HOME/.copilot"
 mkdir -p "$copilot"
 link "$dotfiles_dir/copilot/agents"       "$copilot/agents"
 link "$dotfiles_dir/skills"               "$copilot/skills"
@@ -36,7 +36,7 @@ link "$dotfiles_dir/$global_agents_file"  "$copilot/copilot.instructions.md"
 
 # GEMINI #
 
-gemini="$dotfiles_dir/.gemini"
+gemini="$HOME/.gemini"
 mkdir -p "$gemini"
 link "$dotfiles_dir/skills"               "$gemini/skills"
 link "$dotfiles_dir/$global_agents_file"  "$gemini/GEMINI.md"
