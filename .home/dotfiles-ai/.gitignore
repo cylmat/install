@@ -1,0 +1,4 @@
+# Ne jamais versionner de secrets ni de fichiers locaux
+.env*
+*.bak*
+*.local

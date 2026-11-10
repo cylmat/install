@@ -52,3 +52,18 @@ Each agent must be on its own tool configuration
 - ~/.copilot/agents/
 - ~/.gemini/agents/
 
+
+
+## dotfiles-ai
+
+Harness IA global (Claude, Copilot..). Une seule source de vérité, des symlinks vers `~`.
+
+- `claude/` : `settings.json` (permissions, hooks), `agents/`, `hooks/`.
+- `copilot/` : prompts `.prompt.md` et agents `.agent.md` pour le profil VS Code.
+- `skills/` : skills partagés (lus par Claude Code et Copilot via `~/.claude/skills`).
+- `install.sh` : crée les liens. Idempotent.
+- `agents.global.md` : préférences transverses (importé par `~/.claude/CLAUDE.md`, lié côté Copilot).
+
+Usage : `./install.sh`
+
+Aucun secret dans ce repo. Les tokens MCP passent par des variables d'environnement.

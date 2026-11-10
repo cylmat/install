@@ -1,0 +1,84 @@
+# Mission : créer mon harness IA global dans mon user home
+
+## Contexte
+- Profil : développeur sénior fullstack (Symfony/PHP, React/TypeScript), outils GitHub, Docker, Kubernetes, VS Code.
+- Agents ciblés : GitHub Copilot (VS Code) et Claude Code (CLI).
+- Architecture : microservices, communication via Symfony HttpClient à partir de Swagger/OpenAPI, persistance Doctrine. Pas d'architecture imposée (ni DDD ni hexagonal).
+- Objectif : un harness unique au niveau utilisateur, valable pour tous mes projets. Il encode ma façon de travailler et mes garde-fous, pas les spécificités d'un repo.
+
+## Règles d'exécution (à respecter impérativement)
+1. Avant d'écrire, vérifier l'existant (`~/.claude/`, `~/.copilot/`, profil VS Code). Ne jamais écraser un fichier existant sans sauvegarde `.bak` et sans me le signaler.
+2. Vérifier dans la doc officielle actuelle les chemins Copilot (instructions, skills, agents, prompts, mcp.json), car ils changent souvent. Ne pas se fier à la mémoire.
+3. Aucun secret dans les fichiers. Les tokens MCP passent par variables d'environnement.
+4. Tout ce qui est global doit être défensif : détecter le contexte du projet, ne jamais supposer une commande ou un chemin propre à un repo.
+5. Ne pas dupliquer de contenu entre Copilot et Claude : une source de vérité, le reste en symlinks ou imports.
+6. À la fin, lister les fichiers créés et les vérifications à faire manuellement.
+
+## Arborescence cible
+
+~/dotfiles-ai/ (repo git, versionné sur GitHub, sans secrets)
+  AGENTS.global.md source de vérité des instructions
+  skills/<nom>/SKILL.md skills partagés Claude + Copilot (même format)
+  claude/settings.json permissions + hooks
+  claude/agents/ subagents
+  copilot/prompts/ fichiers .prompt.md
+  install.sh crée les symlinks, idempotent, avec sauvegarde
+
+Symlinks / imports à créer par install.sh :
+- ~/.claude/CLAUDE.md contient `@~/dotfiles-ai/AGENTS.global.md`
+- ~/.claude/settings.json, ~/.claude/skills, ~/.claude/agents pointent vers dotfiles-ai
+- Copilot : instructions globales (~/.copilot/instructions/ ou dossier configuré via `chat.instructionsFilesLocations`), skills (~/.copilot/skills/ ou `chat.agentSkillsLocations`), prompts et agents dans le profil utilisateur VS Code, mcp.json du profil
+
+## 1. AGENTS.global.md (~80 lignes max, concis)
+Préférences transverses uniquement :
+- Découverte avant action : lire Makefile, composer.json, package.json, docker-compose*.yml pour trouver les commandes de test/lint. Ne jamais les supposer.
+- Docker : commandes PHP/Composer via `docker compose exec`, jamais sur l'hôte, sauf si le repo prouve le contraire.
+- Doctrine : migrations générées via `doctrine:migrations:diff`, jamais écrites à la main, toujours relues (colonnes, index, `down()`).
+- Clients HTTP inter-services : typés depuis le Swagger/OpenAPI du service, DTO explicites, jamais de tableaux anonymes, timeouts et gestion d'erreur explicites.
+- Définition de terminé : lint, analyse statique, tests ciblés verts, `tsc` propre.
+- Style : réponses concises, pas de refactoring non demandé, diff minimal.
+- Les règles projet (AGENTS.md / CLAUDE.md du repo) complètent et peuvent contredire le global : ne pas écrire de règles trop catégoriques.
+
+## 2. ~/.claude/settings.json (permissions et hooks)
+- deny : lecture de `.env*`, `~/.kube`, `~/.ssh` ; `kubectl apply|delete|exec` sur contexte non-dev ; `docker system prune` ; `git push --force` ; `rm -rf` hors du projet.
+- allow : `git status|diff|log` ; `gh pr view|checks|run view` ; `kubectl get|describe|logs` ; `docker compose ps|logs`.
+- Hook PreToolUse sur `kubectl` : exécute `kubectl config current-context` et bloque si le contexte contient "prod".
+- Hook PostToolUse de formatage conditionnel : détecte `.php-cs-fixer*` ou `.prettierrc*` / config eslint dans le repo et ne lance l'outil que s'il existe. Aucune erreur si absent.
+- Vérifier le schéma actuel des hooks et permissions dans la doc Claude Code avant d'écrire.
+
+## 3. Skills globaux (format SKILL.md, découvrent le contexte au lieu de le supposer)
+- swagger-http-client (prioritaire) : à partir d'une URL ou d'un fichier OpenAPI, génère DTO, client Symfony HttpClient, gestion d'erreurs, timeouts, tests avec MockHttpClient.
+- doctrine-change : modification d'entité, diff de migration, relecture, impact sur requêtes et index.
+- react-ts-feature : lit les conventions existantes du repo (state, data fetching, tests) puis s'y conforme.
+- k8s-manifest-review : checklist resources, probes, secrets, securityContext, inspection en lecture seule.
+- ci-debug : `gh run list`, `gh run view --log-failed`, diagnostic, correctif.
+- pr-description : à partir du diff, titre et description selon mon format.
+
+## 4. Subagents globaux (claude/agents/)
+- reviewer (lecture seule) : N+1 Doctrine, validation des entrées, timeouts HTTP, gestion d'erreurs inter-services, sécurité.
+- explorer : cartographie un repo inconnu sans polluer le contexte principal.
+- Équivalents Copilot : fichiers .agent.md dans le profil VS Code ; commandes /pr et /review en .prompt.md.
+
+## 5. MCP (scope utilisateur, peu nombreux)
+- Context7 (doc Symfony, React, Doctrine à jour)
+- Playwright
+- Accès base de données en lecture seule (optionnel)
+- Tout le reste en CLI (gh, kubectl, docker), pas de MCP
+- Claude Code : ~/.claude.json (scope user) ; Copilot : mcp.json du profil utilisateur
+- Secrets via variables d'environnement uniquement
+
+## 6. Points de vigilance
+- Copilot n'a ni hooks ni permissions aussi fines : la sécurité repose surtout sur Claude Code et la validation manuelle des commandes terminal dans VS Code.
+- Les skills sont le seul élément réellement portable entre les deux outils.
+- Garder le global court : au-delà de ~100-150 lignes d'instructions, le suivi se dégrade.
+
+## Ordre de réalisation
+1. Repo dotfiles-ai + install.sh + AGENTS.global.md
+2. settings.json (deny/allow + hook kubectl + hook formatage conditionnel)
+3. Skill swagger-http-client
+4. Skill doctrine-change
+5. Subagent reviewer
+6. Autres skills, subagent explorer, prompts Copilot, MCP
+
+## Livrable final
+Liste des fichiers créés ou modifiés, sauvegardes effectuées, chemins Copilot vérifiés dans la doc, et points à tester manuellement (hooks, deny, symlinks).
