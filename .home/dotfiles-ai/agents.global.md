@@ -22,6 +22,9 @@ Ces règles sont des défauts. Les règles du repo (`AGENTS.md`, `CLAUDE.md`, `.
 - Timeouts et gestion d'erreurs explicites sur chaque appel.
 - Tests avec `MockHttpClient`, sans appel réseau réel.
 
+# Git
+- Ne pousse JAMAIS de branches. AUCUN `git push` n'est autorisé de quelque manière que ce soit.
+
 ## Définition de terminé
 - Lint et analyse statique passent (commandes découvertes dans le repo).
 - Tests ciblés verts. Pas de suite complète si elle est lente, sauf demande.

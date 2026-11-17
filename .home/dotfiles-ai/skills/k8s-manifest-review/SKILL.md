@@ -6,8 +6,8 @@ description: Relire des manifests Kubernetes (Deployment, StatefulSet, Service, 
 # Revue de manifests Kubernetes
 
 ## Règle de sécurité
-- Lecture seule. Aucun `kubectl apply`, `delete`, `edit`, `patch`, `exec` ou `scale` d'aucune manière.
-- Vérifier le contexte avant toute lecture en cluster : `kubectl config current-context`. Si le nom contient `prod`, ne rien faire du tout sur le cluster.
+- Lecture seule. Aucun `kubectl apply`, `delete`, `edit`, `patch`, `exec` ou `scale` sans demande explicite et confirmation.
+- Vérifier le contexte avant toute lecture en cluster : `kubectl config current-context`. Si le nom contient `prod`, ne rien faire sur le cluster sans confirmation explicite.
 
 ## 1. Trouver les manifests
 - Chercher dans le repo : `grep -rl "kind: Deployment\|kind: StatefulSet" --include="*.yaml" --include="*.yml" .`
@@ -26,4 +26,4 @@ description: Relire des manifests Kubernetes (Deployment, StatefulSet, Service, 
 
 ## 3. Rapport
 - Lister les constats par sévérité (bloquant, à corriger, suggestion), avec le fichier et la ligne.
-- Ne proposer aucune correction, rester en revue seule.
+- Ne proposer une correction que si elle est demandée. Sinon, rester en revue.
