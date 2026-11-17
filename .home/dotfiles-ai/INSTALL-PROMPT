@@ -60,7 +60,6 @@ Préférences transverses uniquement :
 - Équivalents Copilot : fichiers .agent.md dans le profil VS Code ; commandes /pr et /review en .prompt.md.
 
 ## 5. MCP (scope utilisateur, peu nombreux)
-- Context7 (doc Symfony, React, Doctrine à jour)
 - Playwright
 - Accès base de données en lecture seule (optionnel)
 - Tout le reste en CLI (gh, kubectl, docker), pas de MCP

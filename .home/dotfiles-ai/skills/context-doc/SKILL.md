@@ -3,59 +3,65 @@ name: context-doc
 description: This skill should be used when the user asks about libraries, frameworks, API references, or needs code examples. Activates for setup questions, code generation involving libraries, or mentions of specific frameworks like React, Vue, Next.js, Symfony, Doctrine, etc.
 ---
 
-When the user asks about libraries, frameworks, or needs code examples, use Context7 to fetch current documentation instead of relying on training data.
+When the user asks about libraries, frameworks, or needs code examples, read the official framework documentation at its web URL instead of relying on training data.
 
 ## When to Use This Skill
 
 Activate this skill when the user:
 
 - Asks setup or configuration questions ("How do I configure a Next.js proxy?")
-- Requests code involving libraries ("Write a Prisma query for...")
-- Needs API references ("What are the Supabase auth methods?")
-- Needs an exact fact from a library's source: a default value, a signature, or where an error comes from
+- Requests code involving libraries ("Write a Doctrine query for...")
+- Needs API references ("What are the Symfony security attributes?")
+- Needs an exact fact from a library's documentation: a default value, a signature, or an option name
 - Mentions specific frameworks (React, Vue, Svelte, Express, Tailwind, etc.)
 
-## How to Fetch Documentation
+## How to Find the Documentation
 
-### Step 1: Resolve the Library ID
+### Step 1: Identify the Official Doc URL
 
-Call `resolve-library-id` with:
+Use the known official entry points below. Pick the page that matches the concept.
 
-- `libraryName`: The library name extracted from the user's question
-- `query`: What to look up in the library's documentation (improves relevance ranking)
+| Library | Official documentation |
+|---|---|
+| Symfony | https://symfony.com/doc/current/index.html |
+| Doctrine ORM | https://www.doctrine-project.org/projects/doctrine-orm/en/latest/ |
+| Doctrine Migrations | https://www.doctrine-project.org/projects/doctrine-migrations/en/latest/ |
+| PHP | https://www.php.net/manual/en/ |
+| React | https://react.dev/reference/react |
+| TypeScript | https://www.typescriptlang.org/docs/ |
+| Next.js | https://nextjs.org/docs |
+| Vite | https://vite.dev/guide/ |
+| Tailwind CSS | https://tailwindcss.com/docs |
+| Docker | https://docs.docker.com/ |
+| GitHub Actions | https://docs.github.com/en/actions |
 
-### Step 2: Select the Best Match
+If the library is not in the table, use WebSearch to find its official documentation site, and prefer the project's own domain over blogs or forks.
 
-From the resolution results, choose based on:
+### Step 2: Use a Version-Specific URL When Needed
 
-- Exact or closest name match to what the user asked for
-- Higher benchmark scores indicate better documentation quality
-- If the user mentioned a version (e.g., "React 19"), prefer version-specific IDs
+- If the user mentions a version (e.g., "React 19", "Symfony 7.2"), use the versioned page when the site provides one (e.g., `https://symfony.com/doc/7.2/...`).
+- If the project's version is known from its lockfile or `composer.json` / `package.json`, prefer that version's documentation.
 
-### Step 3: Fetch the Documentation
+### Step 3: Fetch the Page
 
-Fetch internet with:
+- Use WebFetch on the most specific page for the question (one concept per fetch).
+- If the page is not enough, follow links on the official site, or use WebSearch restricted to the official domain (e.g., `site:symfony.com/doc validator constraints`).
+- For a question about the exact internal behavior of a library, read the source on its official repository only when the docs do not answer it.
+- If a page cannot be fetched, say so and use another official page; do not invent content from memory.
 
-- The selected official documentation (e.g., `https://symfony.com/doc`)
-- What to look up in the library's documentation, scoped to a single concept
+### Step 4: Cite Sources
 
-If the user's question spans multiple distinct concepts (e.g. routing and auth and caching), make a separate query call per concept with the same library ID, unless the question is about how the concepts interact — combined queries dilute ranking and return shallow results for each topic.
-
-### Step 4: Read the Source and cite sources
-
-- Cite the file and line of the source you used
+- Give the URL of each page used.
+- Cite the library version when relevant.
 
 ### Step 5: Use the Documentation
 
-Incorporate the fetched documentation into your response:
-
-- Answer the user's question using current, accurate information
-- Include relevant code examples from the docs
-- Cite the library version when relevant
+- Answer the user's question using the fetched content.
+- Include relevant code examples from the docs.
+- If the docs contradict the project's existing code or conventions, say so and let the project's rules take precedence.
 
 ## Guidelines
 
-- **Be specific**: Describe what to look up in the library's documentation, but keep each query to a single concept
-- **One topic per query**: Split multi-topic questions into separate `query-docs` calls — resolve the library ID once, then query per concept, unless the question is about how the concepts interact
-- **Version awareness**: When users mention versions ("Next.js 16", "React 19"), use version-specific library IDs if available from the resolution step
-- **Prefer official sources**: When multiple matches exist, prefer official/primary packages over community forks
+- **Be specific**: fetch the page for one concept at a time. For a multi-topic question (e.g. routing and auth and caching), fetch a separate page per concept unless the question is about how they interact.
+- **Version awareness**: use the version-specific documentation when a version is known.
+- **Official sources only**: prefer the project's own documentation over third-party tutorials. Mark any community source as such.

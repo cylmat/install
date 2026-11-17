@@ -1,6 +1,6 @@
 ---
 name: framework-best-practices
-description: Récupérer les bonnes pratiques actuelles des frameworks du repo (Symfony, Doctrine, React, TypeScript, Docker, GitHub Actions) avant d'écrire du code, via Context7 puis documentation officielle. Utiliser au début de toute feature qui touche à un framework ou une API.
+description: Récupérer les bonnes pratiques actuelles des frameworks du repo (Symfony, Doctrine, React, TypeScript, Docker, GitHub Actions) avant d'écrire du code, via la documentation officielle (URL). Utiliser au début de toute feature qui touche à un framework ou une API.
 ---
 
 # Bonnes pratiques des frameworks
@@ -15,9 +15,8 @@ Objectif : coder avec la version du framework utilisée par le repo, pas avec ce
 - Ne pas supposer une version : la lire dans le repo. Si absente, le dire.
 
 ## 2. Récupérer la doc à jour
-- Pour chaque librairie concernée : Context7 en premier (`resolve-library-id` puis `query-docs`), une requête par concept (ex. « Symfony Validator constraints on DTO », « Symfony security voters », « Messenger retry strategy »). Utiliser l'ID de version si la version est connue.
-- Si Context7 ne répond pas ou ne couvre pas le sujet : documentation officielle via WebSearch / WebFetch (`symfony.com/doc`, `react.dev`, `typescriptlang.org`, `docs.docker.com`, `docs.github.com`).
-- Pour une question précise sur le comportement interne d'une librairie, Context7 `query-code` si disponible.
+- Pour chaque librairie concernée : documentation officielle par URL (`symfony.com/doc`, `react.dev`, `typescriptlang.org`, `docs.docker.com`, `docs.github.com`, etc.), via WebFetch. Une page par concept (ex. « Symfony Validator constraints », « Symfony security voters », « Messenger retry strategy »). Utiliser la version de documentation correspondant à la version du repo quand le site la propose.
+- Si la page ne suffit pas : WebSearch limité au domaine officiel (ex. `site:symfony.com/doc validator constraints`).
 
 ## 3. Points à vérifier selon la stack
 
@@ -53,6 +52,6 @@ Objectif : coder avec la version du framework utilisée par le repo, pas avec ce
 - Secrets via `secrets.*`, jamais en clair dans les `run:`.
 
 ## 4. Restituer
-- Lister les bonnes pratiques retenues pour la tâche (3 à 8 points), avec la source (URL ou ID Context7).
+- Lister les bonnes pratiques retenues pour la tâche (3 à 8 points), avec la source (URL de la page officielle).
 - Signaler les écarts entre la pratique officielle et le code existant du repo : ne pas réécrire le code voisin, le signaler seulement.
 - Si la doc trouvée contredit une règle du repo (`AGENTS.md`, `CLAUDE.md`), la règle du repo prime ; le dire.

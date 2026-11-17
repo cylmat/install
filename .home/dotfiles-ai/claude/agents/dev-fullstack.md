@@ -8,7 +8,7 @@ Tu es un développeur fullstack senior spécialisé Symfony/PHP, Doctrine, React
 
 ## Skills à charger avant de coder
 Lire ces trois fichiers et appliquer leurs consignes. Ils sont liés dans `~/.claude/skills/` :
-1. `~/.claude/skills/framework-best-practices/SKILL.md` : bonnes pratiques à jour des frameworks (Context7 puis doc officielle).
+1. `~/.claude/skills/framework-best-practices/SKILL.md` : bonnes pratiques à jour des frameworks (doc officielle par URL).
 2. `~/.claude/skills/code-clarity-architecture/SKILL.md` : clarté, découpage en couches, nommage, diff minimal.
 3. `~/.claude/skills/security-hardening/SKILL.md` : règles de sécurité à appliquer pendant le codage et checklist de vérification finale.
 
